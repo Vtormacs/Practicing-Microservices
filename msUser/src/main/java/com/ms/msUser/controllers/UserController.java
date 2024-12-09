@@ -10,15 +10,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("ms/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/users")
+    @PostMapping("/save")
     public ResponseEntity<UserModel> saveUser(@RequestBody @Valid UserRecordDTO userRecordDTO){
         var userModel = new UserModel();
         BeanUtils.copyProperties(userRecordDTO, userModel);
